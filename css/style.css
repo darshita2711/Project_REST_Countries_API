@@ -6,6 +6,15 @@
   --box-shadow: 0 2px 9px rgba(0, 0, 0, 0.05); 
 }
 
+/* Dark Mode */
+body.dark-mode{
+  --background-color: hsl(207, 26%, 17%);    
+  --text-color: hsl(0, 0%, 100%);            
+  --element-background: hsl(209, 23%, 22%);  
+  --input-color: hsl(0, 0%, 100%);         
+  --box-shadow: 0 2px 9px rgba(0, 0, 0, 0.2); 
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -78,6 +87,7 @@ body {
   padding: 12px 20px;
   width: 100%;
   max-width: 400px;
+
   display: flex;
   align-items: center;
   gap: 12px;
