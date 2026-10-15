@@ -1,0 +1,212 @@
+:root {
+  --background-color: hsl(0, 0%, 98%);       
+  --text-color: hsl(200, 15%, 8%);           
+  --element-background: hsl(0, 0%, 100%);    
+  --input-color: hsl(0, 0%, 52%);            
+  --box-shadow: 0 2px 9px rgba(0, 0, 0, 0.05); 
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Nunito Sans', sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  line-height: 1.5;
+}
+
+/* Center our main container and give it padding */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.hidden {
+  display: none !important;
+}
+/*  HEADER (Top Bar) */
+.header {
+  background-color: var(--element-background);
+  box-shadow: var(--box-shadow);
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;            
+  margin-bottom: 40px;
+}
+
+.header h1 {
+  font-size: 24px;
+  font-weight: 800;
+}
+
+#theme-toggle {
+  background: none;
+  border: none;
+  color: var(--text-color);
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer; 
+}
+
+.filters {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+  flex-wrap: wrap; 
+  gap: 20px;
+}
+
+.search-box label,
+.region-filter label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.search-box {
+  background-color: var(--element-background);
+  box-shadow: var(--box-shadow);
+  border-radius: 5px;
+  padding: 12px 20px;
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.search-box input {
+  background: none;
+  border: none;
+  outline: none;
+  color: var(--text-color);
+  width: 100%;
+  font-size: 14px;
+}
+
+.search-box input::placeholder {
+  color: var(--input-color);
+}
+/* dropdown */
+.region-filter select {
+  background-color: var(--element-background);
+  color: var(--text-color);
+  box-shadow: var(--box-shadow);
+  border: none;
+  border-radius: 5px;
+  padding: 14px 20px;
+  font-size: 14px;
+  cursor: pointer;
+  outline: none;
+  width: 200px;
+}
+
+/* cards */
+#status-message {
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: var(--input-color);
+}
+
+/* Grid layout for country cards */
+.countries-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 40px;
+}
+
+.country-card {
+  background-color: var(--element-background);
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: var(--box-shadow);
+  cursor: pointer;
+  transition: transform 0.2s ease; 
+}
+
+.country-card:hover {
+  transform: translateY(-5px); 
+}
+
+.country-card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover; 
+}
+
+.country-info {
+  padding: 20px;
+}
+
+.country-info h3 {
+  font-size: 18px;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+
+.country-info p {
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+
+.country-info span {
+  font-weight: 600;
+}
+
+#back-button {
+  background-color: var(--element-background);
+  color: var(--text-color);
+  box-shadow: var(--box-shadow);
+  border: none;
+  border-radius: 5px;
+  padding: 10px 30px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 40px;
+}
+
+#country-details-content {
+  display: flex;
+  gap: 60px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+  .filters {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .header {
+    padding: 20px;
+    margin-bottom: 24px;
+  }
+  .container {
+    padding: 0 20px 20px 20px;
+  }}
+
+/* For Tablets and Small Laptops */
+@media (min-width: 600px) and (max-width: 1024px) {
+  .container {
+    padding: 30px;
+  }
+  .header {
+    padding: 20px 40px;
+  }
+}
+/* For Large Desktops and Wide Monitors */
+@media (min-width: 1440px) {
+  .container {
+    max-width: 1440px; /* Keeps the content from stretching too far */
+    margin: 0 auto;     /* Centers everything on the screen */
+  }
+}

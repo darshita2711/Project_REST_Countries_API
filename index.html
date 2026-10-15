@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REST Countries Explorer</title>
+    <!-- Font Awesome CDN for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- JavaScript -->
+    <script src="js/script.js" defer></script>
+</head>
+
+<body>
+    <!-- Header Navbar -->
+    <header class="header">
+        <h1>Where in the world?</h1>
+
+        <button type="button" id="theme-toggle">
+            <i class="fa-regular fa-moon"></i> Dark Mode
+        </button>
+    </header>
+
+    <main class="container">
+        <h2>Explore Countries</h2>
+        <section class="filters" aria-label="Find countries">
+            <div class="search-box">
+                <label for="country-search">Search for a country</label>
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input
+                    type="search"
+                    id="country-search"
+                    placeholder="Search for a country...">
+            </div>
+            <div class="region-filter">
+                <label for="region-select">Filter by Region</label>
+                <select id="region-select">
+                    <option value="">All Regions</option>
+                    <option value="Africa">Africa</option>
+                    <option value="Americas">Americas</option>
+                    <option value="Asia">Asia</option>
+                    <option value="Europe">Europe</option>
+                    <option value="Oceania">Oceania</option>
+                </select>
+            </div>
+
+        </section>
+        <p id="status-message" role="status" aria-live="polite">
+            Loading countries...
+        </p>
+        <section
+            id="countries-container"
+            class="countries-grid"
+            aria-label="Countries">
+        </section>
+        <section id="country-details" hidden>
+            <button type="button" id="back-button">
+                <i class="fa-solid fa-arrow-left"></i> Back to all countries
+            </button>
+            <div id="country-details-content"></div>
+        </section>
+    </main>
+</body>
+</html>
