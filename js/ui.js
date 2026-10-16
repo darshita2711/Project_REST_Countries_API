@@ -44,3 +44,22 @@ export function searchCountries(countries) {
     displayCountries(filtered);
   });
 }
+
+
+// Filter countries by region
+export function filterByRegion(countries) {
+  const regionFilter = document.querySelector('#region-select');
+
+  if (!regionFilter) return;
+
+  // filter countries region vise
+  regionFilter.addEventListener('change', (e) => {
+    const selectedRegion = e.target.value;
+    const filtered = countries.filter(country => {
+      return selectedRegion === '' || country.region === selectedRegion;
+    });
+    
+    // this is display the filterd countries 
+    displayCountries(filtered);
+  });
+}
