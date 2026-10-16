@@ -4,7 +4,9 @@ import { MESSAGES } from './messages.js';
 
 export async function fetchCountries() {
   try {
+    // inside the response we getting all the countries list
     const response = await fetch(ALL_COUNTRIES_URL, {
+      // this is for the authorization
       headers: { 'Authorization': `Bearer ${API_KEY}` }
     });
 
@@ -19,6 +21,7 @@ export async function fetchCountries() {
     
     const statusMessage = document.getElementById('status-message');
     if (statusMessage) {
+      //  messages getting from message file
         statusMessage.textContent = MESSAGES.error;
     }
     

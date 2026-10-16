@@ -1,8 +1,10 @@
+// inittheme for change mode 
 export function initTheme() {
   const themeToggleBtn = document.getElementById('theme-toggle');
 
   if (!themeToggleBtn) return;
-
+  
+  // we click on mode button then add the html part and mode change
   themeToggleBtn.addEventListener('click', () => {
     document.body.classList.toggle('dark-mode');
 
