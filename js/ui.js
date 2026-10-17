@@ -34,7 +34,9 @@ export function displayCountries(countriesList) {
         <p><span>Capital:</span> ${country.capitals?.[0]?.name || 'N/A'}</p>
       </div>
     `;
-    
+    card.addEventListener('click', () => {
+      showDetailView(country);
+    });
     // inside container add the card for display
     container.appendChild(card);
   });
@@ -74,4 +76,48 @@ export function filterByRegion(countries) {
     // this is display the filterd countries 
     displayCountries(filtered);
   });
+}
+
+
+export function showDetailView(country) {
+  const flagUrl = country.flags?.svg || country.flags?.png || country.flag?.url_svg || country.flag?.url_png || country.flag || '';
+  const name = country.names?.common || country.name?.common || country.name || 'Unknown';
+  const capital = country.capitals?.[0]?.name || country.capital?.[0] || 'N/A';
+  const currencies = country.currencies ? Object.values(country.currencies).map(c => c.name).join(', ') : 'N/A';
+
+  // Populate detail content
+  document.getElementById('country-details-content').innerHTML = `
+    <img src="${flagUrl}" alt="${name} flag">
+    <div class="detail-content">
+      <h2>${name}</h2>
+      <p><span>Population:</span> ${Number(country.population || 0).toLocaleString()}</p>
+      <p><span>Region:</span> ${country.region || 'N/A'}</p>
+      <p><span>Sub Region:</span> ${country.subregion || 'N/A'}</p>
+      <p><span>Capital:</span> ${capital}</p>
+      <p><span>Currencies:</span> ${currencies}</p>
+    </div>
+  `;
+
+  // Toggle visibility using your HTML elements
+  const searchInput = document.querySelector('#country-search');
+  const regionSelect = document.querySelector('#region-select');
+  const countriesContainer = document.getElementById('countries-container');
+  const detailsSection = document.getElementById('country-details');
+
+  if (searchInput) searchInput.style.display = 'none';
+  if (regionSelect) regionSelect.style.display = 'none';
+  if (countriesContainer) countriesContainer.style.display = 'none';
+  if (detailsSection) detailsSection.hidden = false;
+
+  // Back button event
+  const backButton = document.getElementById('back-button');
+  if (backButton) {
+    backButton.onclick = () => {
+      console.log("kkk")
+      if (detailsSection) detailsSection.hidden = true;
+      if (countriesContainer) countriesContainer.style.display = '';
+      if (searchInput) searchInput.style.display = '';
+      if (regionSelect) regionSelect.style.display = '';
+    };
+  }
 }
