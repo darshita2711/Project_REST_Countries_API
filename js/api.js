@@ -2,6 +2,11 @@ import { API_KEY } from './secret.js';
 import { ALL_COUNTRIES_URL } from './urls.js';
 import { MESSAGES } from './messages.js';
 
+
+const FALLBACK_URL = (typeof CONFIG !== "undefined" && CONFIG.LOCAL_DATA_FALLBACK)
+  ? CONFIG.LOCAL_DATA_FALLBACK
+  : "./data.json";
+
 export async function fetchCountries() {
   try {
     // inside the response we getting all the countries list
@@ -16,8 +21,24 @@ export async function fetchCountries() {
     const result = await response.json();
     return result.data.objects;
 
-  } catch (error) {
-    console.error('Error fetching countries:', error);
+    } catch (error) {
+    console.warn('Primary API failed. Attempting fallback to local data...', error);
+    
+    try {
+      // If primary fails, fetch from local fallback url
+      const fallbackResponse = await fetch(FALLBACK_URL);
+
+      if (!fallbackResponse.ok) {
+        throw new Error('Failed to fetch local fallback data');
+      }
+
+      const fallbackResult = await fallbackResponse.json();
+      
+      // Handle data structure difference if your local JSON format differs slightly
+      return fallbackResult.data?.objects || fallbackResult;
+
+  } catch (fallbackError) {
+    console.error('Error fetching countries:',fallbackError);
     
     const statusMessage = document.getElementById('status-message');
     if (statusMessage) {
@@ -27,4 +48,5 @@ export async function fetchCountries() {
     
     return [];
   }
+}
 }

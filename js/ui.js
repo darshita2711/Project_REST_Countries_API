@@ -13,10 +13,22 @@ export function displayCountries(countriesList) {
     const card = document.createElement('div');
     card.className = 'country-card';
 
+    const flagUrl = 
+      country.flags?.svg || 
+      country.flags?.png || 
+      country.flag?.url_svg || 
+      country.flag?.url_png || 
+      country.flag || '';
+
+    const countryName = 
+      country.names?.common || 
+      country.name?.common || 
+      country.name || 
+      'Unknown';
     card.innerHTML = `
-      <img src="${country.flag?.url_png || ''}" alt="${country.names?.common || 'Flag'}">
+      <img src="${flagUrl}" alt="${country.names?.common || 'Flag'}" onerror="this.src='';">
       <div class="country-info">
-        <h3>${country.names?.common || 'Unknown'}</h3>
+        <h3>${countryName}</h3>
         <p><span>Population:</span> ${Number(country.population || 0).toLocaleString()}</p>
         <p><span>Region:</span> ${country.region || 'N/A'}</p>
         <p><span>Capital:</span> ${country.capitals?.[0]?.name || 'N/A'}</p>
