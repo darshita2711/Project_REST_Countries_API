@@ -25,7 +25,8 @@ Users should be able to:
 
 ### Links
 
-- **Live Demo URL:** [https://aesthetic-cuchufli-ddaa87.netlify.app/]
+- **Live Demo URL:** 
+[demo link](https://aesthetic-cuchufli-ddaa87.netlify.app/)
 
 ## My process
 
